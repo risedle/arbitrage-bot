@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { ethers, Contract, providers, Wallet } from "ethers";
+import { ethers, Contract, Wallet, BigNumber } from "ethers";
 import { Pool } from "@uniswap/v3-sdk";
 import { Token } from "@uniswap/sdk-core";
 
@@ -85,7 +85,7 @@ const ERC20ABI = [
 // Swap exact amount of input
 async function swapExactInput(
     tokenIn: Token,
-    amountIn: number,
+    amountIn: BigNumber,
     tokenOut: Token,
     wallet: Wallet
 ): Promise<void> {
@@ -153,12 +153,15 @@ async function arbitrage(
     // Arbitrage the pool
     if (coingeckoPrice > uniswapPrice) {
         // Then it means the pool is to cheap; Swap USDC for more WETH
-        const amountIn = parseInt((100 * uniswapPrice * 1e6).toFixed(0));
+        const amountIn = ethers.utils.parseUnits(
+            (200 * uniswapPrice * 1e6).toFixed(0),
+            token0.decimals
+        );
         await swapExactInput(token0, amountIn, token1, wallet);
     }
     if (coingeckoPrice < uniswapPrice) {
         // Then it means the pool is to expensive; Swap WETH for more USDC
-        const amountIn = 100 * 1e18;
+        const amountIn = ethers.utils.parseUnits("200", token1.decimals);
         await swapExactInput(token1, amountIn, token0, wallet);
     }
 }
