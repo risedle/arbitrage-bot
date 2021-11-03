@@ -1,17 +1,17 @@
 {
     "main": "dist/main.js",
     "scripts": {
-        "dev": "wrangler dev",
-        "build": "webpack",
-        "deploy": "wrangler publish"
+        "build": "tsc"
     },
     "dependencies": {
-        "typescript": "4.4.4"
-    },
-    "devDependencies": {
         "@uniswap/sdk-core": "3.0.1",
         "@uniswap/v3-sdk": "3.6.2-optimism-regenesis",
         "ethers": "5.5.1",
+        "node-cron": "3.0.0",
+        "typescript": "4.4.4"
+    },
+    "devDependencies": {
+        "@types/node-cron": "^3.0.0",
         "prettier": "2.4.1",
         "ts-loader": "9.2.6"
     }

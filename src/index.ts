@@ -1,11 +1,5 @@
-async function triggerEvent(event: ScheduledEvent) {
-    // Fetch some data
-    console.log("cron processed", event.scheduledTime);
-}
+import cron from "node-cron";
 
-/**
- * Cron entry point
- */
-addEventListener("scheduled", (event: ScheduledEvent) => {
-    event.waitUntil(triggerEvent(event));
+cron.schedule("* * * * * *", () => {
+    console.log("[arbitrage] Run");
 });
