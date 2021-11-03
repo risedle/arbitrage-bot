@@ -1,18 +1,18 @@
 {
     "main": "dist/main.js",
     "scripts": {
-        "worker:build": "webpack",
-        "worker:deploy": "wrangler publish"
+        "dev": "wrangler dev",
+        "build": "webpack",
+        "deploy": "wrangler publish"
     },
     "dependencies": {
         "typescript": "4.4.4"
     },
     "devDependencies": {
-        "@cloudflare/workers-types": "3.0.0",
-        "@cloudflare/wrangler": "1.19.4",
+        "@uniswap/sdk-core": "3.0.1",
+        "@uniswap/v3-sdk": "3.6.2-optimism-regenesis",
+        "ethers": "5.5.1",
         "prettier": "2.4.1",
-        "ts-loader": "9.2.6",
-        "webpack": "5.61.0",
-        "webpack-cli": "4.9.1"
+        "ts-loader": "9.2.6"
     }
 }
