@@ -2,9 +2,6 @@
 
 This bot allows user experience on kovan testnet to run smoothly.
 
-This bot is deployed on the
-[Cloudflare Workers](https://developers.cloudflare.com/workers/).
-
 ## Get started
 
 Clone the repository:
@@ -16,16 +13,14 @@ Install the dependencies:
 
     npm install
 
-Setup wrangler:
+Copy `.env.example` to `.env` and modify the values.
 
-    npx wrangler login
+## Run
 
-## Deployment
+Build the program:
 
-Build the worker:
+    tsc
 
-    npm run worker:build
+Run the program:
 
-Deploy the worker:
-
-    npm run worker:deploy
+    node dist/cron.js
