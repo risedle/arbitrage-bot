@@ -22,4 +22,7 @@ const token1Decimal = parseInt(process.env.TOKEN1_DECIMAL);
 const token0 = new Token(chainID, token0Address, token0Decimal);
 const token1 = new Token(chainID, token1Address, token1Decimal);
 
-arbitrage(chainID, provider, token0, token1);
+// Create the wallet
+const wallet = new ethers.Wallet(process.env.WALLET_PRIVATE_KEY, provider);
+
+arbitrage(token0, token1, wallet);
