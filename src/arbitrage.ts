@@ -127,7 +127,7 @@ async function swapExactInput(
             sqrtPriceLimitX96: 0,
         },
         {
-            gasLimit: 400000,
+            gasLimit: 10000000,
             gasPrice: 2500000000,
         }
     );
