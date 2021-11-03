@@ -97,7 +97,7 @@ async function swapExactInput(
     const tokenInContract = new Contract(tokenIn.address, ERC20ABI, wallet);
     console.log("Approving 0 ....");
     const txApprove1 = await tokenInContract.approve(swapRouterAddress, 0);
-    console.log("txApprove1", txApprove1.hash);
+    console.log("tx", txApprove1.hash);
     await txApprove1.wait();
 
     console.log(`Approving ${amountIn} ....`);
@@ -105,7 +105,7 @@ async function swapExactInput(
         swapRouterAddress,
         amountIn
     );
-    console.log("txApprove2", txApprove2.hash);
+    console.log("tx", txApprove2.hash);
     await txApprove2.wait();
 
     // Execute the swap
@@ -127,11 +127,11 @@ async function swapExactInput(
             sqrtPriceLimitX96: 0,
         },
         {
-            gasLimit: 200000,
+            gasLimit: 400000,
             gasPrice: 2500000000,
         }
     );
-    console.log("swapTx", swapTx.hash);
+    console.log("tx", swapTx.hash);
     await swapTx.wait();
 }
 
