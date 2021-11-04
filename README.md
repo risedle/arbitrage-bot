@@ -24,3 +24,10 @@ Build the program:
 Run the program:
 
     node dist/cron.js
+
+## Future improvements
+
+-   Minimizing the number of transactions and maximizing the price movement. For
+    example if the price is only less than 1% difference we should buy/sell
+    small amount, otherwise we should buy/sell large amount to be able to catch
+    up the price.
