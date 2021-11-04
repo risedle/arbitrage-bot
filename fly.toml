@@ -1,0 +1,8 @@
+# fly.toml file generated for arbitrage-kovan-weth-usdc on 2021-11-04T12:32:51+07:00
+
+app = "arbitrage-kovan-weth-usdc"
+
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
