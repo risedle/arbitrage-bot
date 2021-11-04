@@ -3,9 +3,20 @@ import arbitrage from "./arbitrage";
 import { ethers } from "ethers";
 import { Token } from "@uniswap/sdk-core";
 import dotenv from "dotenv";
+import * as Sentry from "@sentry/node";
 
 // Load environment variables
 dotenv.config();
+
+// Initialize sentry
+Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+
+    // Set tracesSampleRate to 1.0 to capture 100%
+    // of transactions for performance monitoring.
+    // We recommend adjusting this value in production
+    tracesSampleRate: 1.0,
+});
 
 cron.schedule("* * * * *", async () => {
     // Chains
@@ -33,5 +44,6 @@ cron.schedule("* * * * *", async () => {
         await arbitrage(token0, token1, wallet);
     } catch (e) {
         console.error("Failed to run arbitrage:", e);
+        Sentry.captureException(e);
     }
 });
