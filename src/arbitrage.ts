@@ -121,13 +121,13 @@ async function swapExactInput(
             tokenOut: tokenOut.address,
             fee: 500,
             recipient: wallet.address,
-            deadline: 1635968321,
+            deadline: Math.floor(Date.now() / 1000) + 60 * 20,
             amountIn: amountIn,
             amountOutMinimum: 0,
             sqrtPriceLimitX96: 0,
         },
         {
-            gasLimit: 10000000,
+            gasLimit: 1250000,
             gasPrice: 2500000000,
         }
     );
@@ -154,14 +154,14 @@ async function arbitrage(
     if (coingeckoPrice > uniswapPrice) {
         // Then it means the pool is to cheap; Swap USDC for more WETH
         const amountIn = ethers.utils.parseUnits(
-            (200 * uniswapPrice * 1e6).toFixed(0),
+            (500 * uniswapPrice).toFixed(0),
             token0.decimals
         );
         await swapExactInput(token0, amountIn, token1, wallet);
     }
     if (coingeckoPrice < uniswapPrice) {
         // Then it means the pool is to expensive; Swap WETH for more USDC
-        const amountIn = ethers.utils.parseUnits("200", token1.decimals);
+        const amountIn = ethers.utils.parseUnits("500", token1.decimals);
         await swapExactInput(token1, amountIn, token0, wallet);
     }
 }
