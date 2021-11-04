@@ -25,6 +25,18 @@ Run the program:
 
     node dist/cron.js
 
+## Deployment
+
+This bot is deployed to [fly.io](https://fly.io/docs/introduction/).
+
+Set the secret:
+
+    flyctl secrets set CHAIN_ID=42 TOKEN0_ADDRESS= TOKEN0_DECIMAL= TOKEN1_ADDRESS= TOKEN1_DECIMAL= ALCHEMY_URL= WALLET_PRIVATE_KEY= SENTRY_DSN=
+
+Run the following command to deploy:
+
+    flyctl deploy
+
 ## Future improvements
 
 -   Minimizing the number of transactions and maximizing the price movement. For
