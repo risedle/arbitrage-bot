@@ -18,7 +18,7 @@ Sentry.init({
     tracesSampleRate: 1.0,
 });
 
-cron.schedule("* * * * *", async () => {
+const task = cron.schedule("*/5 * * * *", async () => {
     // Chains
     const chainID = parseInt(process.env.CHAIN_ID);
 
@@ -46,4 +46,11 @@ cron.schedule("* * * * *", async () => {
         console.error("Failed to run arbitrage:", e);
         Sentry.captureException(e);
     }
+});
+
+process.on("SIGTERM", () => {
+    console.info("SIGTERM signal received.");
+    console.log("Stopping cron job ...");
+    task.stop();
+    console.log("Cronjob stopped ...");
 });
