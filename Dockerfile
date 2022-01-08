@@ -19,3 +19,4 @@ RUN npm install
 RUN npm run build
 
 CMD [ "node", "./dist/cron.js" ]
+ENTRYPOINT [ "node", "./dist/cron.js" ]
