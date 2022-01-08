@@ -29,13 +29,19 @@ Run the program:
 
 This bot is deployed to [fly.io](https://fly.io/docs/introduction/).
 
+Create new app:
+
+    flyctl launch
+
+Please use name in the toml files.
+
 Set the secret:
 
-    flyctl secrets set CHAIN_ID=42 TOKEN0_ADDRESS= TOKEN0_DECIMAL= TOKEN1_ADDRESS= TOKEN1_DECIMAL= ALCHEMY_URL= WALLET_PRIVATE_KEY= SENTRY_DSN=
+    flyctl secrets -c arbitrage-bot-2.toml set ALCHEMY_URL="rpc" WALLET_PRIVATE_KEY="pk" SENTRY_DSN="sentry"
 
 Run the following command to deploy:
 
-    flyctl deploy
+    flyctl deploy -c arbitrage-bot-2.toml
 
 ## Future improvements
 
