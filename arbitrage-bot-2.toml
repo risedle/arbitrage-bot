@@ -1,0 +1,13 @@
+app = "arbitrage-kovan-weth-usdc-2"
+
+kill_signal = "SIGTERM"
+kill_timeout = 5
+processes = []
+
+[env]
+  CHAIN_ID = 42
+  TOKEN0_ADDRESS = "0x0Af08696CB51e81456DC0a1dee7F8BfAD8d82a22"
+  TOKEN0_DECIMAL = 6
+  TOKEN1_ADDRESS = "0x4470E84Ce5C1fe89EA35a19560b6f2b1Ed71507f"
+  TOKEN1_DECIMAL = 18
+
